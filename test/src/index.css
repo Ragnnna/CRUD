@@ -1,0 +1,21 @@
+body {
+  background: #E5E5E5;
+  overflow: hidden;
+}
+
+.App{
+  max-width: 1920px;
+  height: auto;
+}
+
+.main-content{
+  width: 90%;
+  margin: auto;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
