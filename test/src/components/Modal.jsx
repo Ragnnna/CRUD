@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../App'
-import { createProfile, fetchUser, fetchUsers } from '../store/actions/asyncActions'
+import { createProfile, fetchUser, fetchUsers, updateProfile } from '../store/actions/asyncActions'
 import { CLOSE_MODAL } from '../store/reducers/modalReduser'
 import './components.css'
 
@@ -85,7 +85,7 @@ const Modal = ({ display, id }) => {
                 closeModal()
                 return
             }
-            await context.updateUser({gender: user.gender, birthdate: user.birthdate, username: user.username, city: user.city}, context.currentUser._id)
+            await dispatch(updateProfile({gender: user.gender, birthdate: user.birthdate, username: user.username, city: user.city}, context.currentUser._id))
             history.push('/')
             closeModal()
             return dispatch(fetchUsers())
