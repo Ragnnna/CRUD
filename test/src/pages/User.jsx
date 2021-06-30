@@ -18,10 +18,16 @@ const User = ({match}) => {
     const id = match.url.slice(6, match.url.length)
     const context = useContext(UserContext)
 
-    const user = userState.users.filter(el => el._id === id)
+    
     useEffect(() => {
         dispatch(fetchUsers())
     }, [])
+
+    const user = userState.users.filter(el => el._id === id)
+
+    if(user === undefined){
+        return history.push('/')
+    }
 
     const profileModalRender = () => {
         return <ProfileModal currentUser={user}/>
@@ -45,6 +51,9 @@ const User = ({match}) => {
 
     const renderProfiles = () => {
         const User = userState.users.find(el => el._id === id)
+        if(User === undefined){
+            return history.push('/')
+        }
         const type = User.isAdmin ? 'Admin' : 'User'
         return (
             <>

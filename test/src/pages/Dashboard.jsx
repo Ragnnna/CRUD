@@ -31,7 +31,7 @@ const Dashboard = () => {
                 </div>
                 <div className="profiles-age dash-block">
                     <p>Profiles over 18 years old:</p>
-                    <p>16</p>
+                    <p>{profiles}</p>
                 </div>
             </div>
         </div>
