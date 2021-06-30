@@ -22,6 +22,8 @@ const App = () => {
   
   const token = localStorage.getItem('token')
 
+  console.log(token)
+
   const clearUser = () => {
     localStorage.setItem('token', 'none')
     setToggler(state => state = !state)
@@ -42,6 +44,7 @@ const App = () => {
       currentUser,
       setToken, 
       clearUser,
+      setToggler,
       user, 
       setErrorRegister, 
       errorRegister

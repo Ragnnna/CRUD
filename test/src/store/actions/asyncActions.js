@@ -53,7 +53,8 @@ export const deleteProfile = (id) => {
     return async(dispatch, getState) => {
         await fetch(`http://localhost:4000/user/${id}`, { method: 'PUT'} )
             if(id !== getState().user._id){
-        return await dispatch(fetchUsers())
+                console.log(getState().user.user, id)
+                return await dispatch(fetchUsers())
         }else{
             return localStorage.setItem('token', 'none')
         }

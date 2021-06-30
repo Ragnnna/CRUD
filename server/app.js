@@ -11,7 +11,7 @@ const User = require('./Schemas/User')
 
 
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 4000
 const str = process.env.MONGO_KEY
 
 app.use(cors())

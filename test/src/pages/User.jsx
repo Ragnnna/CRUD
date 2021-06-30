@@ -1,18 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import PageTitle from '../components/PageTitle'
 import ProfileModal from '../components/ProfileModal'
 import ProfileCard from '../components/ProfileCard'
 import { useDispatch, useSelector } from 'react-redux'
 import './pages.css'
 import { SHOW_MODAL } from '../store/reducers/modalReduser'
-import { fetchUsers } from '../store/actions/asyncActions'
+import { deleteProfile, fetchUsers } from '../store/actions/asyncActions'
+import { UserContext } from '../App'
+import { useHistory } from 'react-router-dom'
 
 const User = ({match}) => {
 
+    const history = useHistory()
     const modals = useSelector(state => state.modal)
     const userState = useSelector(state => state.user)
     const dispatch = useDispatch()
     const id = match.url.slice(6, match.url.length)
+    const context = useContext(UserContext)
 
     const user = userState.users.filter(el => el._id === id)
     useEffect(() => {
@@ -25,6 +29,16 @@ const User = ({match}) => {
 
     const showModal = () => {
         dispatch({ type: SHOW_MODAL, payload: {type: 'profile', name: ''} })
+    }
+
+    const deleteProfileHandler = () => {
+        if(id === context.token){
+            dispatch(deleteProfile(user._id))
+            localStorage.setItem('token', 'none')
+            context.setToggler(state => !state)
+            return history.push('/login')
+        }
+        dispatch(deleteProfile(user._id))
     }
 
     const mappedUsers = userState.users.filter(el => id === el.token && el.main === false ).map(el => <ProfileCard key={el._id} user={el}/>)
@@ -41,7 +55,7 @@ const User = ({match}) => {
             </div>
             <div className="profile-interface">
                 <a href onClick={showModal} className="edit-btn-profile"><span className="material-icons icons">edit</span></a>
-                <a href className="delete-btn-profile"><span className="material-icons">delete_outline</span></a>
+                <a href onClick={deleteProfileHandler} className="delete-btn-profile"><span className="material-icons">delete_outline</span></a>
             </div>
             <PageTitle title='Profiles:'/>
             </>
