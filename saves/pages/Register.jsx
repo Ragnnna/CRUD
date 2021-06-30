@@ -93,7 +93,7 @@ const Register = () => {
                     <span onClick={handleCheckbox}>isAdmin</span>
                 </div>
                 <div className="form-control submit-control">
-                    <a href onClick={RegisterHandler} className="btn-submit">Sign Up</a>
+                    <a onClick={RegisterHandler} className="btn-submit">Sign Up</a>
                 </div>
                 <p className="auth-error">{context.errorRegister}</p>
             </form>

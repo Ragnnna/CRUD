@@ -3,7 +3,7 @@ import '../components/components.css'
 import { useContext, useState } from 'react'
 import { UserContext } from '../App'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchUsers } from '../store/actions/asyncActions'
 
 const Login = () => {
@@ -37,7 +37,7 @@ const Login = () => {
             return
         }
         context.setToken(data.user._id)
-        dispatch(fetchUsers())
+        console.log(await dispatch(fetchUsers()))
         history.push('/')
     }
 
@@ -58,7 +58,7 @@ const Login = () => {
                     </label>
                 </div>
                 <div className="form-control submit-control">
-                    <a href className="btn-submit" onClick={loginHandler}>Sign In</a>
+                    <a className="btn-submit" onClick={loginHandler}>Sign In</a>
                 </div>
             </form>
         </div>

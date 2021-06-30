@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../App'
-import { createProfile, fetchUser, fetchUsers } from '../store/actions/asyncActions'
 import { CLOSE_MODAL } from '../store/reducers/modalReduser'
 import './components.css'
 
-const Modal = ({ display, id }) => {
+const Modal = ({ display }) => {
 
-    const modals = useSelector(state => state.modal)
     const dispatch = useDispatch()
     const history = useHistory()
     const radioRefMale = useRef(null)
@@ -33,14 +31,13 @@ const Modal = ({ display, id }) => {
     }
 
     useEffect(() => {
-        const profile = context.currentUser
+        const profile = JSON.parse(localStorage.getItem('currentProfile'))
         if(profile.gender === 'male'){
-            radioRefMale.current.checked = true
+            return radioRefMale.current.checked = true
         }else{
             radioRefFemale.current.checked = true
         }
-        if(modals.nameModal === 'update'){
-            console.log(profile)
+        if(context.typeModal === 'update'){
             return setUser(state => ({...state, username: profile.username, city: profile.city, birthdate: profile.birthdate, gender: 'male'}))
         }
     }, [])
@@ -68,27 +65,23 @@ const Modal = ({ display, id }) => {
             closeModal()
             return
         }
-        const current = await dispatch(fetchUser(context.token))
-            .then(data => {
-                return data.user
-            })
-        await dispatch(createProfile({...current, gender: user.gender, birthdate: user.birthdate, main: user.main, username: user.username, city: user.city, token: context.token}))
-        await dispatch(fetchUsers())
+        const current = await context.getCurrentAccount(context.token)
+        await context.createProfile({...current['user'], gender: user.gender, birthdate: user.birthdate, main: user.main, username: user.username, city: user.city, token: context.token})
+        await context.getUsers()
         closeModal()
         return clearState()
     }
 
     const changeTriger = async() => {
-        if(modals.nameModal === "update"){
+        if(context.typeModal === "update"){
             if(!user.gender || !user.birthdate || !user.username || !user.city){
                 history.push('/')
-                closeModal()
+                context.closeModal()
                 return
             }
             await context.updateUser({gender: user.gender, birthdate: user.birthdate, username: user.username, city: user.city}, context.currentUser._id)
             history.push('/')
-            closeModal()
-            return dispatch(fetchUsers())
+            context.closeModal()
         }
         return await createProfileTriger()
     }
@@ -126,8 +119,8 @@ const Modal = ({ display, id }) => {
                         </label>
                     </div>
                     <div className="interface-modal">
-                        <a href onClick={changeTriger}><span className="material-icons btn">done</span></a>
-                        <a href onClick={closeModal}><span className="material-icons btn">close</span></a>
+                        <a onClick={changeTriger}><span className="material-icons btn">done</span></a>
+                        <a onClick={closeModal}><span className="material-icons btn">close</span></a>
                     </div>
                 </form>
            </div>

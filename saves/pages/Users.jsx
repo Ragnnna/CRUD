@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { UserContext } from '../App'
 import PageTitle from '../components/PageTitle'
 import UserCard from '../components/UserCard'
 import { fetchUsers } from '../store/actions/asyncActions'
@@ -14,6 +15,9 @@ const Users = () => {
     ,[])
 
     const user = useSelector(state => state.user)
+    
+    
+
     const users = user.users
     
 

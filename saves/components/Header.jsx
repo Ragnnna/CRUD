@@ -2,25 +2,19 @@ import React, { useContext, useEffect, useState } from 'react'
 import './components.css'
 import { NavLink, useHistory } from 'react-router-dom'
 import { UserContext } from '../App'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchUser } from '../store/actions/asyncActions'
 
 const Header = () => {
 
     const dispatch = useDispatch()
+    const userState = useSelector(state => state.user)
     const [ username, setUsername ] = useState(null)
     const [ admin, setAdmin ] = useState('')
     const history = useHistory()
     const context = useContext(UserContext)
     useEffect(() => {
-        const fetchUserData = async() => {
-            await dispatch(fetchUser(context.token))
-            .then(data => {
-                setAdmin(data.user.isAdmin)
-                setUsername(data.user.username)
-            })
-        }
-        fetchUserData()
+        
     },[])
 
     const logOut = () => {
@@ -39,7 +33,6 @@ const Header = () => {
 
     return (
         <header className="header">
-            
             <div className="user">
                 <div className="avatar">
                     <img src="" alt="" />

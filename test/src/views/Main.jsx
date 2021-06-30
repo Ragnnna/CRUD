@@ -6,18 +6,23 @@ import Dashboard from '../pages/Dashboard';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { UserContext } from '../App';
 import User from '../pages/User';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../store/actions/asyncActions';
 
 const Main = () => {
 
+  const dispatch = useDispatch()
   const context = useContext(UserContext)
   const [ admin, setAdmin ] = useState('')
 
   useEffect(() => {
-    const fetchUser = async() => {
-      const user = (await context.getCurrentAccount(context.token)).user
-      setAdmin(user.isAdmin)
-    }
-    fetchUser()
+    const fetchUserData = async() => {
+      await dispatch(fetchUser(context.token))
+      .then(data => {
+          setAdmin(data.user.isAdmin)
+      })
+  }
+  fetchUserData()
   }, [])
 
     return(

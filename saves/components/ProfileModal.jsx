@@ -1,13 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { fetchUser, fetchUsers, updateProfile } from '../store/actions/asyncActions'
+import { UserContext } from '../App'
+import { fetchUser, fetchUsers, updateUser } from '../store/actions/asyncActions'
 import { CLOSE_MODAL } from '../store/reducers/modalReduser'
 import './components.css'
 
 
-const ProfileModal = ({ currentUser }) => {
+const ProfileModal = () => {
 
+    const userState = useSelector(state => state.user)
     const dispatch = useDispatch()
     const history = useHistory()
     const id = history.location.pathname.slice(6, history.location.pathname.length)
@@ -18,11 +20,12 @@ const ProfileModal = ({ currentUser }) => {
     })
     const radioRefUser = useRef(null)
     const radioRefAdmin = useRef(null)
+    const context = useContext(UserContext)
 
     useEffect(() => {
         dispatch(fetchUsers())
         dispatch(fetchUser(id))
-        const profile = currentUser[0]
+        const profile = userState.user
         if(profile.isAdmin){
             radioRefAdmin.current.checked = true
         }else{
@@ -46,7 +49,7 @@ const ProfileModal = ({ currentUser }) => {
     
     const updateUserHandler = async() => {
         dispatch({type: CLOSE_MODAL, payload: { type: 'profile', name: ''}})
-        return await dispatch(updateProfile({ username: user.username, email: user.email, isAdmin: user.isAdmin }, id))
+        return await dispatch(updateUser({ username: user.username, email: user.email, isAdmin: user.isAdmin }, id))
     }
     return (
         <div className="profile-modal-area">
@@ -74,8 +77,8 @@ const ProfileModal = ({ currentUser }) => {
                         </label>
                     </div>
                     <div className="interface-modal">
-                        <a href onClick={updateUserHandler}><span className="material-icons btn">done</span></a>
-                        <a href onClick={() => dispatch({type: CLOSE_MODAL, payload: { type: 'profile', name: ''}})}><span className="material-icons btn">close</span></a>
+                        <a onClick={updateUserHandler}><span className="material-icons btn">done</span></a>
+                        <a onClick={() => dispatch({type: CLOSE_MODAL, payload: { type: 'profile', name: ''}})}><span className="material-icons btn">close</span></a>
                     </div>
                 </form>
             </div>

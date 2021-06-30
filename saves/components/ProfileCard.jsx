@@ -4,7 +4,7 @@ import Modal from '../components/Modal'
 import { UserContext } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
 import { SHOW_MODAL } from '../store/reducers/modalReduser'
-import { deleteProfile, fetchUser } from '../store/actions/asyncActions'
+import { fetchUser } from '../store/actions/asyncActions'
 
 const ProfileCard = ({ user }) => {
     
@@ -12,7 +12,7 @@ const ProfileCard = ({ user }) => {
     const modals = useSelector(state => state.modal)
     const context = useContext(UserContext)
     const ShowModal = async() => {
-        dispatch({ type: SHOW_MODAL, payload: { type: 'user', name: "update"} })
+        dispatch({ type: SHOW_MODAL, payload: { type: 'user', name: 'update'} })
         context.setCurrentUser(user)
         dispatch(fetchUser(user._id))
     }
@@ -34,8 +34,8 @@ const ProfileCard = ({ user }) => {
                 <p>{user.city ? user.city : '-'}</p>
             </div>
             <div className="interface-card">
-                <a href onClick={ShowModal} className="edit-btn">edit<span className="material-icons icons">edit</span></a>
-                <a href onClick={() => dispatch(deleteProfile(user._id))} className="delete-btn">delete<span className="material-icons">delete_outline</span></a>
+                <a  onClick={ShowModal} className="edit-btn">edit<span className="material-icons icons">edit</span></a>
+                <a onClick={() => context.deleteUser(user._id)} className="delete-btn">delete<span className="material-icons">delete_outline</span></a>
             </div>
         </div>
         <div>

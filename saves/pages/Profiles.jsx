@@ -5,34 +5,35 @@ import CreateProfile from '../components/CreateProfile'
 import './pages.css'
 import { UserContext } from '../App'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUser, fetchUsers } from '../store/actions/asyncActions'
+import { fetchUsers } from '../store/actions/asyncActions'
 
 const Profiles = () => {
 
+    const user = useSelector(state => state.user)
     const dispatch = useDispatch()
     const context = useContext(UserContext)
     const [ isAdmin, setIsAdmin ] = useState('')
-    const usersState = useSelector(state => state.user)
+
 
     useEffect(() => {
-        const fetchUserData = async() => {
-            await dispatch(fetchUsers())
+        const fetchUser = async() => {
             dispatch(fetchUser(context.token))
-            .then(data => {
-                setIsAdmin(data.user.isAdmin)
-            })
+            setIsAdmin(user.isAdmin)
         }
-        fetchUserData()
+        fetchUser()
     }, [])
 
-    const users = isAdmin ? usersState.users.map(el => <ProfileCard key={el._id} user={el}/>) 
-    : usersState.users.filter(el => usersState.token === el.token).map(el => <ProfileCard key={el._id} user={el}/>)  
+    useEffect(() => {
+        dispatch(fetchUsers)
+    }, [])
+    const users = isAdmin ? user.users.map(el => <ProfileCard key={el._id} user={el}/>) 
+    : user.users.filter(el => context.token === el.token).map(el => <ProfileCard key={el._id} user={el}/>)  
 
     return (
         <div className="users-page">
             <PageTitle title="Profiles:" />
             <div style={{'overflowY': users.length > 8 ? 'scroll' : 'hidden'}} className="cards-block">
-                {usersState.users.length > 0 ? users : <div></div>}
+                {users}
                 <CreateProfile />
             </div>
         </div>
