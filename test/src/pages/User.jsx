@@ -7,6 +7,7 @@ import { ProfileCard } from '../components/ProfileCard'
 import './pages.css'
 import { deleteProfile, fetchUsers } from '../store/actions/asyncActions'
 import { UserContext } from '../App'
+import { SHOW_MODAL } from '../store/environment'
 
 const User = ({ match }) => {
   const history = useHistory()
