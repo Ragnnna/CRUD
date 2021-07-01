@@ -1,5 +1,4 @@
-export const SHOW_MODAL = 'SHOW_MODAL'
-export const CLOSE_MODAL = 'CLOSE_MODAL'
+import { CLOSE_MODAL, SHOW_MODAL } from '../environment'
 
 const initialState = {
   modal: false,

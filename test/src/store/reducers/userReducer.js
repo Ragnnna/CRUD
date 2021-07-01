@@ -1,5 +1,4 @@
-export const FETCH_USERS = 'FETCH_USERS'
-export const FETCH_USER = 'FETCH_USER'
+import { FETCH_USER, FETCH_USERS } from '../environment'
 
 const initialState = {
   user: {},

@@ -14,7 +14,7 @@ const UserCard = ({
       <Link to={`/user/${id}`}><p className="title">{ username }</p></Link>
       <p>{ email }</p>
       <p>
-        { profilesLength }
+        { `${profilesLength} ` }
         { type }
       </p>
     </div>

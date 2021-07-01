@@ -32,7 +32,7 @@ const Profiles = () => {
   return (
     <div className="users-page">
       <PageTitle title="Profiles:" />
-      <div style={{ overflowY: users.length > 8 ? 'scroll' : 'hidden' }} className="cards-block">
+      <div style={{ overflowY: users.length > 4 ? 'scroll' : 'hidden' }} className="cards-block">
         {usersState.users.length > 0 ? users : <div />}
         <CreateProfile />
       </div>

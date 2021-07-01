@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { fetchUser, fetchUsers, updateProfile } from '../store/actions/asyncActions'
-import { CLOSE_MODAL } from '../store/reducers/modalReduser'
+import { CLOSE_MODAL } from '../store/environment'
 import './components.css'
 
 const ProfileModal = ({ currentUser }) => {

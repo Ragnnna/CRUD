@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UserContext } from '../App'
-import { SHOW_MODAL } from '../store/reducers/modalReduser'
+import { SHOW_MODAL } from '../store/environment'
 import './components.css'
 import { Modal } from './Modal'
 

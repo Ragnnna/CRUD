@@ -4,9 +4,8 @@ import { useHistory } from 'react-router-dom'
 import { UserContext } from '../App'
 import { Modal } from './Modal'
 import './components.css'
-
-import { SHOW_MODAL } from '../store/reducers/modalReduser'
 import { deleteProfile, fetchUser } from '../store/actions/asyncActions'
+import { SHOW_MODAL } from '../store/environment'
 
 const ProfileCard = ({ user }) => {
   const history = useHistory()

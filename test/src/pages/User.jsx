@@ -5,7 +5,6 @@ import { PageTitle } from '../components/PageTitle'
 import { ProfileModal } from '../components/ProfileModal'
 import { ProfileCard } from '../components/ProfileCard'
 import './pages.css'
-import { SHOW_MODAL } from '../store/reducers/modalReduser'
 import { deleteProfile, fetchUsers } from '../store/actions/asyncActions'
 import { UserContext } from '../App'
 

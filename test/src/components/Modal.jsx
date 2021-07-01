@@ -7,7 +7,7 @@ import { UserContext } from '../App'
 import {
   createProfile, fetchUser, fetchUsers, updateProfile,
 } from '../store/actions/asyncActions'
-import { CLOSE_MODAL } from '../store/reducers/modalReduser'
+import { CLOSE_MODAL } from '../store/environment'
 import './components.css'
 
 const Modal = ({ display }) => {
