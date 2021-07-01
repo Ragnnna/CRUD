@@ -1,140 +1,140 @@
-.cards-block{
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y:scroll;
-    height: 700px;
+.cards-block {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 800px;
 }
 
-.users-cards-block{
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: hidden;
-    height: auto;
-    max-height: 700px;
+.users-cards-block {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: hidden;
+  height: auto;
+  max-height: 800px;
 }
 
-.dashboard{
-    display: flex;
-    height: auto;
+.dashboard {
+  display: flex;
+  height: auto;
 }
 
-.dash-block{
-    box-sizing: border-box;
-    text-align: center;
-    width: max-content;
-    height: 278px;
-    padding: 45px 75px 25px 75px;
-    background: #FFFFFF;
-    border: 1px solid #D6D8E7;
-    border-radius: 16px;
-    margin-right: 80px;
+.dash-block {
+  box-sizing: border-box;
+  text-align: center;
+  width: max-content;
+  height: 278px;
+  padding: 45px 75px 25px 75px;
+  background: #ffffff;
+  border: 1px solid #d6d8e7;
+  border-radius: 16px;
+  margin-right: 80px;
 }
 
-.dash-block > p:first-child{
-    font-weight: normal;
-    font-size: 36px;
-    color: #14142B;
+.dash-block > p:first-child {
+  font-weight: normal;
+  font-size: 36px;
+  color: #14142b;
 }
 
-.dash-block > p:last-child{
-    font-weight: 600;
-    font-size: 48px;
-    color: #14142B;
+.dash-block > p:last-child {
+  font-weight: 600;
+  font-size: 48px;
+  color: #14142b;
 }
 
-.form-control{
-    margin-bottom: 25px;
+.form-control {
+  margin-bottom: 25px;
 }
 
-.register-block{
-    margin-top: 120px;
-    height: 600px;
+.register-block {
+  margin-top: 120px;
+  height: 600px;
 }
 
-.register-form{
-    box-sizing: border-box;
-    width: max-content;
-    height: inherit;
-    margin: 100px auto;
+.register-form {
+  box-sizing: border-box;
+  width: max-content;
+  height: inherit;
+  margin: 100px auto;
 }
 
-.auth-title{
-    width: max-content;
-    margin: auto;
-    font-size: 48px;
+.auth-title {
+  width: max-content;
+  margin: auto;
+  font-size: 48px;
 }
 
-.btn-submit{
-    background: #EFF0F6;
-    font-size: 24px;
-    padding: 10px 20px;
-    border-radius: 9px;
-    margin: auto;
-    transition: background-color 0.2s;
+.btn-submit {
+  background: #eff0f6;
+  font-size: 24px;
+  padding: 10px 20px;
+  border-radius: 9px;
+  margin: auto;
+  transition: background-color 0.2s;
 }
 
-.auth-input-title{
-    font-size: 18px;
-    color: #6E7191;
-    margin-bottom: 5px;
+.auth-input-title {
+  font-size: 18px;
+  color: #6e7191;
+  margin-bottom: 5px;
 }
 
-.input-style{
-    background: none;
-    border: none;
-    border-bottom: 1px solid black;
-    outline: none;
-    width: 400px;
-    font-size: 24px;
+.input-style {
+  background: none;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  width: 400px;
+  font-size: 24px;
 }
 
-.submit-control{
-    cursor: pointer;
-    width: max-content;
-    margin: 80px auto;
+.submit-control {
+  cursor: pointer;
+  width: max-content;
+  margin: 80px auto;
 }
 
-.btn-submit:hover{
-    background-color: #e7e8f0;
-    outline: 1px solid #cacbcf;
+.btn-submit:hover {
+  background-color: #e7e8f0;
+  outline: 1px solid #cacbcf;
 }
 
-.checkbox-register{
-    display: none;
+.checkbox-register {
+  display: none;
 }
 
-.custom-checkbox{
-    cursor: pointer;
-    margin-left: 150px;
-    margin-right: 5px;
-    display: inline-block;
-    height: 10px;
-    width: 10px;
-    border: 1px solid black;
-    color: #E5E5E5;
+.custom-checkbox {
+  cursor: pointer;
+  margin-left: 150px;
+  margin-right: 5px;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border: 1px solid black;
+  color: #e5e5e5;
 }
 
-.form-control > span{
-    cursor: pointer;
+.form-control > span {
+  cursor: pointer;
 }
 
-.user-info > .info{
-    text-align: center;
-    font-size: 32px;
-    color: #14142B;
+.user-info > .info {
+  text-align: center;
+  font-size: 32px;
+  color: #14142b;
 }
 
-.user-info > .info-type{
-    text-align: center;
-    font-size: 24px;
+.user-info > .info-type {
+  text-align: center;
+  font-size: 24px;
 }
 
-.profile-interface{
-    width: max-content;
-    margin: auto;
+.profile-interface {
+  width: max-content;
+  margin: auto;
 }
-.profile-interface > a > span{
-    cursor: pointer;
-    color: black;
-    padding: 4px;
+.profile-interface > a > span {
+  cursor: pointer;
+  color: black;
+  padding: 4px;
 }
